@@ -15,12 +15,5 @@ public class WelcomeFrame extends JPanel
 		add(wel);		
 		
 	}
-	
-	
-	
-	public static void main(String[] args)
-	{
-
-	}
 
 }
