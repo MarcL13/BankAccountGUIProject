@@ -1,4 +1,7 @@
 import java.awt.CardLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -6,18 +9,31 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
-public class GenFrame extends JFrame
+public class GenFrame extends JFrame implements ActionListener
 {
 	public GenFrame()
 	{
+		//making arraylist
+		ArrayList accs = new ArrayList<BankAccount>();
+		
 		//making card layout
 		CardLayout card1 = new CardLayout();
 		
+		//overall panel and set it's layout (CL)
+		JPanel overall = new JPanel();
+		overall.setLayout(card1);
+		
+		//adding frames
+		WelcomeFrame welcomePanel = new WelcomeFrame();
+		CreateAccount createPanel = new CreateAccount(accs);
+
+		
+		//add the panels to overall
+		overall.add(welcomePanel, "welcome");
+		overall.add(createPanel, "create");
 		
 		
-		//adding welcome frame
-		WelcomeFrame welcome = new WelcomeFrame();
-		welcome.setLayout(card1);
+		//in actionlisteners for your menuitems tell panel what to show
 		
 		//making the menubar and menus
 		JMenuBar menubar = new JMenuBar();
@@ -46,14 +62,27 @@ public class GenFrame extends JFrame
 		menubar.add(transaction);
 		menubar.add(acc);
 		
-		
-		
-		
-		
+		add(overall);
 		
 		//welcome frame shown first
-		card1.show(welcome, "welcome");
-		add(welcome);
+		card1.show(overall, "welcome");
+		
+		
+		//action listeners
+		home.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				card1.show(overall, "welcome");;
+			}
+		});
+		
+		create.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				card1.show(overall, "create");
+			}
+		});
+		
 		
 		//general stuff
 		this.setJMenuBar(menubar);
@@ -67,5 +96,14 @@ public class GenFrame extends JFrame
 		new GenFrame();
 		
 	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	
 
 }
