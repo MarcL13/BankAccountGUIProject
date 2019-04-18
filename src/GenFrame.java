@@ -26,18 +26,20 @@ public class GenFrame extends JFrame implements ActionListener
 		//adding frames
 		WelcomeFrame welcomePanel = new WelcomeFrame();
 		CreateAccount createPanel = new CreateAccount(accs);
+		RemoveAccount removePanel = new RemoveAccount(accs);
 
 		
 		//add the panels to overall
 		overall.add(welcomePanel, "welcome");
 		overall.add(createPanel, "create");
+		overall.add(removePanel, "remove");
 		
 		
 		//in actionlisteners for your menuitems tell panel what to show
 		
 		//making the menubar and menus
 		JMenuBar menubar = new JMenuBar();
-		JMenu home = new JMenu("Home");
+		JMenuItem home = new JMenuItem("Home");
 		JMenu transaction = new JMenu("Transactions");
 		JMenu acc = new JMenu("Accounts");
 		
@@ -51,7 +53,6 @@ public class GenFrame extends JFrame implements ActionListener
 		JMenuItem find = new JMenuItem("Find Account");
 		
 		//adding everything
-		menubar.add(home);
 		transaction.add(deposit);
 		transaction.add(withdraw);
 		transaction.add(transfer);
@@ -61,13 +62,8 @@ public class GenFrame extends JFrame implements ActionListener
 		acc.add(find);
 		menubar.add(transaction);
 		menubar.add(acc);
-		
-		add(overall);
-		
-		//welcome frame shown first
-		card1.show(overall, "welcome");
-		
-		
+		menubar.add(home);
+				
 		//action listeners
 		home.addActionListener(new ActionListener() {
 			
@@ -83,6 +79,18 @@ public class GenFrame extends JFrame implements ActionListener
 			}
 		});
 		
+		remove.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				card1.show(overall, "remove");
+			}
+		});
+		
+		//adding to general frame
+		add(overall);
+		
+		//welcome frame shown first
+		card1.show(overall, "welcome");
 		
 		//general stuff
 		this.setJMenuBar(menubar);
