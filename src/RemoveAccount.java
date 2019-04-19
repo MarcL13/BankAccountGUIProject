@@ -30,13 +30,13 @@ public class RemoveAccount extends JPanel implements ActionListener
 		add(info, gbc);
 		
 		gbc.gridx = 1;
-		gbc.gridwidth = 2;
+		gbc.gridwidth = 0;
 		JTextField answer = new JTextField();
 		answer.setPreferredSize(new Dimension (125,30));
 		add(answer,gbc);
 		
 		gbc.gridx = 0;
-		gbc.gridy = 3;
+		gbc.gridy = 1;
 		JButton remove = new JButton("Remove Account");
 		remove.setPreferredSize(new Dimension (150,30));
 		add(remove,gbc);
@@ -50,7 +50,15 @@ public class RemoveAccount extends JPanel implements ActionListener
 				for(int i = 0; i < accs.size(); i++)
 				{
 					int accNum = Integer.parseInt(num);
-					if(accs.get(i).getAccNum() == accNum)
+					if(accs.get(i).getAccNum() != accNum)
+					{
+						gbc.gridx = 0;
+						gbc.gridy = 2;
+						JLabel none = new JLabel("There are no accounts that match that number.  Enter again: ");
+						add(none,gbc);
+						repaint();
+					}
+					else if(accs.get(i).getAccNum() == accNum)
 					{
 						accs.remove(i);
 						answer.setText("");

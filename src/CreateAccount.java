@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 
 public class CreateAccount extends JPanel implements ActionListener
 {
-	public CreateAccount(ArrayList accs)
+	public CreateAccount(ArrayList<BankAccount> accs)
 	{
 		final double OVER_DRAFT_FEE = 0;
 		final double RATE = 0;

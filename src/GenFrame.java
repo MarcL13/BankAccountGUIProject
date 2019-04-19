@@ -27,12 +27,17 @@ public class GenFrame extends JFrame implements ActionListener
 		WelcomeFrame welcomePanel = new WelcomeFrame();
 		CreateAccount createPanel = new CreateAccount(accs);
 		RemoveAccount removePanel = new RemoveAccount(accs);
+		FindAccount findPanel = new FindAccount(accs);
+		DepositFrame depositPanel = new DepositFrame(accs);
+		
 
 		
 		//add the panels to overall
 		overall.add(welcomePanel, "welcome");
 		overall.add(createPanel, "create");
 		overall.add(removePanel, "remove");
+		overall.add(findPanel, "find");
+		overall.add(depositPanel, "deposit");
 		
 		
 		//in actionlisteners for your menuitems tell panel what to show
@@ -83,6 +88,20 @@ public class GenFrame extends JFrame implements ActionListener
 			
 			public void actionPerformed(ActionEvent e) {
 				card1.show(overall, "remove");
+			}
+		});
+		
+		find.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				card1.show(overall, "find");
+			}
+		});
+		
+		deposit.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				card1.show(overall, "deposit");
 			}
 		});
 		
