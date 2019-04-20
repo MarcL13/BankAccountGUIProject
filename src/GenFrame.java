@@ -30,6 +30,7 @@ public class GenFrame extends JFrame implements ActionListener
 		FindAccount findPanel = new FindAccount(accs);
 		DepositFrame depositPanel = new DepositFrame(accs);
 		WithdrawFrame withdrawPanel = new WithdrawFrame(accs);
+		TransferFrame transferPanel = new TransferFrame(accs);
 
 		
 		//add the panels to overall
@@ -39,6 +40,7 @@ public class GenFrame extends JFrame implements ActionListener
 		overall.add(findPanel, "find");
 		overall.add(depositPanel, "deposit");
 		overall.add(withdrawPanel, "withdraw");
+		overall.add(transferPanel, "transfer");
 		
 		
 		
@@ -111,6 +113,13 @@ public class GenFrame extends JFrame implements ActionListener
 			
 			public void actionPerformed(ActionEvent e) {
 				card1.show(overall,  "withdraw");
+			}
+		});
+		
+		transfer.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				card1.show(overall,  "transfer");
 			}
 		});
 		
