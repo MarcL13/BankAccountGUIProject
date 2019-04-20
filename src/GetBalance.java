@@ -10,9 +10,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class FindAccount extends JPanel implements ActionListener
+public class GetBalance extends JPanel implements ActionListener
 {
-	public FindAccount(ArrayList<BankAccount> accs)
+	public GetBalance(ArrayList<BankAccount> accs)
 	{
 		final double OVER_DRAFT_FEE = 0;
 		final double RATE = 0;
@@ -26,8 +26,8 @@ public class FindAccount extends JPanel implements ActionListener
 		
 		gbc.gridx = 0;
 		gbc.gridy = 0;
-		JLabel find = new JLabel("Which account would you like to see? Enter the account number: ");
-		add(find,gbc);
+		JLabel question = new JLabel("Which account would you like to see the balance of? Enter the account number: ");
+		add(question,gbc);
 		
 		gbc.gridx = 0;
 		gbc.gridy = 1;
@@ -37,45 +37,36 @@ public class FindAccount extends JPanel implements ActionListener
 		
 		gbc.gridx = 0;
 		gbc.gridy = 2;
-		JButton go = new JButton("Find Account");
-		add(go,gbc);
+		JButton get = new JButton("Get Balance");
+		add(get,gbc);
 		
-		go.addActionListener(new ActionListener()
+		get.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				String acc = answer.getText();
+				String accNum = answer.getText();
 				for(BankAccount a : accs)
 				{
-					if(a.getAccNum() == Integer.parseInt(acc))
+					if(a.getAccNum() == Integer.parseInt(accNum))
 					{
 						gbc.gridx = 0;
 						gbc.gridy = 3;
-						JLabel display = new JLabel(a.toString());
-						add(display,gbc);
+						JLabel display = new JLabel("" + a.getBalance());
+						add(display, gbc);
 						answer.setText("");
 					}
 				}
 			}
-
-			
 		});
+		
 		
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
+	
 
 }
